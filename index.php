@@ -49,38 +49,67 @@
         ],
 
     ];
-    ?>
-<div class="row">
-    <div class="col-6">
-        <table class="table table-ligth table-striped">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Parking</th>
-                    <th>Vote</th>
-                    <th>Distance to center</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($hotels as $hotel) { ?>
-    
-                    <tr>
-                        <td><?php echo $hotel["name"] ?></td>
-                        <td><?php echo $hotel["description"] ?></td>
-                        <td><?php echo $hotel["parking"] ? "Si" : "No" ?></td>
-                        <td><?php echo $hotel["vote"] ?></td>
-                        <td><?php echo $hotel["distance_to_center"] ?></td>
-                    </tr>
-    
-    
-                <?php } ?>
-    
-            </tbody>
-        </table>
 
+
+
+    $parkingFilter = isset($_GET["parking"]);
+    $hotelToShow = $hotels;
+
+    if ($parkingFilter) {
+        $hotelToShow = [];
+        foreach ($hotels as $hotel) {
+            if ($hotel["parking"]) {
+                $hotelToShow[] = $hotel;
+            }
+        }
+    }
+    ?>
+
+
+
+
+    <div class="row">
+        <div class="col">
+            <form method="GET">
+                <input type="checkbox" name="parking">
+                <button>Invio</button>
+            </form>
+        </div>
     </div>
-</div>
+
+
+
+    <div class="row">
+        <div class="col-6">
+            <table class="table table-light table-striped">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Parking</th>
+                        <th>Vote</th>
+                        <th>Distance to center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($hotelToShow as $hotel) { ?>
+
+                        <tr>
+                            <td><?php echo $hotel["name"] ?></td>
+                            <td><?php echo $hotel["description"] ?></td>
+                            <td><?php echo $hotel["parking"] ? "Si" : "No" ?></td>
+                            <td><?php echo $hotel["vote"] ?></td>
+                            <td><?php echo $hotel["distance_to_center"] ?></td>
+                        </tr>
+
+
+                    <?php } ?>
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
