@@ -67,12 +67,16 @@
 
 
 
+<div class="container mt-5">
+
+<h1 class="pb-4">Hotels</h1>
 
     <div class="row">
         <div class="col">
             <form method="GET">
                 <input type="checkbox" name="parking">
-                <button>Invio</button>
+                <label for="parking">Parcheggio</label>
+                <button class="btn btn-primary mb-4 ms-3">Invio</button>
             </form>
         </div>
     </div>
@@ -80,7 +84,7 @@
 
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-12">
             <table class="table table-light table-striped">
                 <thead>
                     <tr>
@@ -110,6 +114,7 @@
 
         </div>
     </div>
+</div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
